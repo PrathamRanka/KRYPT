@@ -1,25 +1,24 @@
-import { useState } from 'react'
-import './App.css'
-import { Footer, Loader, Navbar, Services, Transactions, Welcome } from './components'
-import React from 'react'
-import { TransactionsProvider } from './context/TransactionContext'  // ✅ import provider
+import React from 'react';
+import './App.css';
+import { Footer, Loader, Navbar, Services, Transactions, Welcome } from './components';
+import { TransactionsProvider } from './context/TransactionContext';
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <TransactionsProvider>  {/* ✅ wrap your app with provider */}
+    <TransactionsProvider>
       <div className="min-h-screen">
         <div className="gradient-bg-welcome">
           <Navbar />
           <Welcome />
-        </div> 
+        </div>
         <Services />
         <Transactions />
-        <Footer /> 
+        <Footer />
       </div>
+      <Analytics /> {/* ✅ Add analytics tracking */}
     </TransactionsProvider>
-  )
+  );
 }
 
-export default App
+export default App;

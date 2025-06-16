@@ -59,8 +59,8 @@ export const TransactionsProvider = ({ children }) => {
 
       const accounts = await ethereum.request({ method: "eth_accounts" });
       if (accounts.length) {
-        setCurrentAccount(accounts[0]);
-        await getAllTransactions();
+        console.log("Wallet authorized, but waiting for user to connect manually");
+        // Do not auto-set currentAccount
       } else {
         console.log("No accounts found");
       }
@@ -119,7 +119,7 @@ export const TransactionsProvider = ({ children }) => {
           from: currentAccount,
           to: addressTo,
           gas: "0x5208",
-          value: '0x' + parsedAmount.toString(16),  // ✅ Convert BigInt to hex string,
+          value: '0x' + parsedAmount.toString(16),
         }]
       });
 
